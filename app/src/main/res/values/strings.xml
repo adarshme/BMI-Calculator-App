@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">BMI Calculator</string>
+    <string name="height">Height: </string>
+    <string name="weight">Weight: </string>
+    <string name="heightHint">Enter height in centimeters</string>
+    <string name="weightHint">Enter weight in kilograms</string>
+    <string name="calculate">Calculate</string>
+    <string name="bmi">Your BMI will appear here</string>
+    <string name="bmiCat">Your BMI category will appear here</string>
+    <string name="VSevUW">Very Severely Underweight</string>
+    <string name="SevUW">Severely Underweight</string>
+    <string name="UW">Underweight</string>
+    <string name="NW">Normal weight</string>
+    <string name="OW">Overweight</string>
+    <string name="ModOW">Moderately overweight</string>
+    <string name="SevOW">Severely overweight</string>
+    <string name="VSevOW">Very severely overweight</string>
+</resources>
