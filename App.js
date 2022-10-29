@@ -1,6 +1,7 @@
 import { StatusBar } from "expo-status-bar";
-import { SafeAreaView, StyleSheet, Text } from "react-native";
+import { Platform, SafeAreaView, StyleSheet, Text } from "react-native";
 import BMICalculator from "./components/BMICalculator";
+import Constants from "expo-constants";
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
+    marginTop: Platform.OS === "android" ? Constants.statusBarHeight : 0,
   },
   heading: {
     fontSize: 32,
