@@ -1,16 +1,26 @@
 import React from "react";
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
 export default function BMICalculator() {
   const [height, setHeight] = React.useState(null);
   const [weight, setWeight] = React.useState(null);
   const [bmi, setBmi] = React.useState(null);
+  const [showBmi, setShowBmi] = React.useState(false);
 
   React.useEffect(() => {
     if (height && weight) {
       const h = Number.parseFloat(height) / 100;
       const w = Number.parseFloat(weight);
-      setBmi(w / (h * h));
+      const bmi = Math.round((w / (h * h)) * 100) / 100;
+      setBmi(bmi);
+    } else {
+      setBmi(null);
     }
   }, [height, weight]);
 
@@ -42,7 +52,15 @@ export default function BMICalculator() {
         />
       </View>
 
-      {bmi && (
+      <TouchableOpacity
+        style={[styles.button, bmi ? null : styles.disabledButton]}
+        disabled={bmi ? false : true}
+        onPress={() => setShowBmi(!showBmi)}
+      >
+        <Text>{showBmi ? "Hide" : "Show"} BMI</Text>
+      </TouchableOpacity>
+
+      {showBmi && bmi && (
         <View>
           <Text style={{ marginTop: 20, textAlign: "center", fontSize: 20 }}>
             BMI is {bmi}
@@ -62,5 +80,17 @@ const styles = StyleSheet.create({
     marginTop: 20,
     flexDirection: "row",
     justifyContent: "space-around",
+  },
+
+  button: {
+    marginTop: 20,
+    alignSelf: "center",
+    backgroundColor: "lightblue",
+    padding: 10,
+    borderRadius: 10,
+  },
+
+  disabledButton: {
+    opacity: 0.5,
   },
 });
